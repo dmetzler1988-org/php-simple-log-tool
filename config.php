@@ -13,7 +13,7 @@ interface config {
     // Define the error levels, on which emails should be sent.
     const emailNotificationLevels = ['fatal', 'error', 'warning'];
     // Set email addresses to which the mails should be sent.
-    const emailAddresses = 'daniel.metzler@gateb.com, daniel.metzler@gmail.com';
+    const emailAddresses = 'mail@google.com, another.mail@google.com';
     // Define a subject for your emails.
     // Use the placeholder "$level$" for error level output.
     const emailSubject = '$level$: SimpleLogTool Report';
