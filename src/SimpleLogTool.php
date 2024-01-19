@@ -6,7 +6,7 @@ require_once __DIR__ . '/config.php';
 
 final class SimpleLogTool
 {
-    const EMAIL_SUBJECT_PLACEHOLDER = '$level$';
+    public const string EMAIL_SUBJECT_PLACEHOLDER = '$level$';
 
     private string $logFilePath = config::logFilePath;
     private int $keepLogFiles = config::keepLogFiles;
@@ -34,7 +34,7 @@ final class SimpleLogTool
 
         // If option to send notification via email is enabled, try to send the notification email.
         if ($this->enableLogMailService) {
-            self::sendNotificationMail($message);
+            self::sendNotificationMail($message, '404');
         }
     }
 
@@ -66,8 +66,8 @@ final class SimpleLogTool
     private function sendNotificationMail(string $message, string $errorLevel): void
     {
         $emailSubject = $this->emailSubject;
-        if (strpos($emailSubject, EMAIL_SUBJECT_PLACEHOLDER) !== false) {
-            $emailSubject = str_replace(EMAIL_SUBJECT_PLACEHOLDER, $errorLevel, $emailSubject);
+        if (strpos($emailSubject, self::EMAIL_SUBJECT_PLACEHOLDER) !== false) {
+            $emailSubject = str_replace(self::EMAIL_SUBJECT_PLACEHOLDER, $errorLevel, $emailSubject);
         }
 
         try {

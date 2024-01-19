@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\SetList;
+use Rector\Set\ValueObject\LevelSetList;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -21,6 +24,7 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::NAMING,
         SetList::PRIVATIZATION,
         SetList::STRICT_BOOLEANS,
-        SetList::PHP_83
+        SetList::PHP_83,
+        LevelSetList::UP_TO_PHP_83
     ]);
 };
